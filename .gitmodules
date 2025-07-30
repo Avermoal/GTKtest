@@ -1,0 +1,3 @@
+[submodule "external/gtk"]
+	path = external/gtk
+	url = https://github.com/GNOME/gtk.git

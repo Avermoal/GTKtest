@@ -1,0 +1,3 @@
+/home/avermoal/repos/GTKtest/build/CMakeFiles/GTKtest.dir
+/home/avermoal/repos/GTKtest/build/CMakeFiles/edit_cache.dir
+/home/avermoal/repos/GTKtest/build/CMakeFiles/rebuild_cache.dir

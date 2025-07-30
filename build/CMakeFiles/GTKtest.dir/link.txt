@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/GTKtest.dir/src/main.c.o -o GTKtest  -lGTK-NOTFOUND
