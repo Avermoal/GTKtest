@@ -4,21 +4,9 @@ set(PROJECT_NAME GTKtest)
 
 project(${PROJECT_NAME})
 
-set(MESON_SOURCE_DIR "external/gtk")
-set(MESON_BUILD_DIR "${CMAKE_BINARY_DIR}/gtk")
-
-execute_process(
-  COMMAND meson setup ${MESON_BUILD_DIR}
-  WORKING_DIRECTORY ${MESON_SOURCE_DIR}
-)
-
-execute_process(
-  COMMAND ninja
-  WORKING_DIRECTORY ${MESON_BUILD_DIR}
-)
-
-include_directories("${MESON_BUILD_DIR}/include")
-find_library(GTK gtk HINTS "${MESON_BUILD_DIR}")
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(GTK4 REQUIRED IMPORTED_TARGET gtk4)
+pkg_check_modules(OPENGL REQUIRED IMPORTED_TARGET gl)
 
 set(PROJECT_INCLUDES
   includes/test.h
@@ -33,4 +21,8 @@ add_executable(${PROJECT_NAME}
   ${PROJECT_SRC}
 )
 
-target_link_libraries(${PROJECT_NAME} PRIVATE ${GTK})
+target_include_directories(${PROJECT_NAME} PRIVATE ${GTK4_INCLUDE_DIRS} ${OPENGL_INCLUDE_DIRS})
+target_link_directories(${PROJECT_NAME} PRIVATE ${GTK4_LIBRARY_DIRS})
+target_link_libraries(${PROJECT_NAME} ${GTK4_LIBRARIES} ${OPENGL_LIBRARIES})
+
+target_compile_options(${PROJECT_NAME} PRIVATE ${GTK4_CFLAGS_OTHER})
