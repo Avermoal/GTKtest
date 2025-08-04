@@ -22,7 +22,7 @@ int main(void)
 
   GtkWidget* window = gtk_window_new();
 
-  gtk_window_set_title(GTK_WINDOW(window), "Видеосмотритель");
+  gtk_window_set_title(GTK_WINDOW(window), "ГОЙДАсмотрительZOVZOVZOVZOV");
 
   gtk_window_set_default_size(GTK_WINDOW(window), 720, 720);
 
